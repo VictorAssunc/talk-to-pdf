@@ -60,6 +60,8 @@ def answer_stream(question, vector_store) -> Generator[str, None, None]:
 
 def main():
     load_dotenv()
+    os.environ["PINECONE_API_KEY"] = st.secrets["PINECONE_API_KEY"]
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
     
     pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
     
