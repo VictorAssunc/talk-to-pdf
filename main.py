@@ -1,18 +1,17 @@
 import os
 import streamlit as st
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from pinecone import Pinecone, ServerlessSpec
-from dotenv import load_dotenv
 import tempfile
+import time
+
+from dotenv import load_dotenv
+from langchain.chains.question_answering import load_qa_chain
+from langchain.prompts import PromptTemplate
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_pinecone import PineconeVectorStore
-from langchain.prompts import PromptTemplate
-from langchain.chains.question_answering import load_qa_chain
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from pinecone import Pinecone, ServerlessSpec
 from typing import Generator
-import time
-import random
-import string
 
 
 def load_split_document(pdf_path):
